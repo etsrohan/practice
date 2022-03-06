@@ -2,7 +2,6 @@
 pragma solidity ^0.6.0;
 
 contract SimpleStorage {
-
     // This will get initialized to 0!
     uint256 favoriteNumber;
     // bool favoriteBool = false;
@@ -11,7 +10,7 @@ contract SimpleStorage {
     // address favoriteAddress = 0xbB66eF34814f0613a3B738288FE55553A69C44BA;
     // bytes32 favoriteBytes = "Cat";
 
-    struct People{
+    struct People {
         uint256 favoriteNumber;
         string name;
     }
@@ -20,7 +19,7 @@ contract SimpleStorage {
     // People public person = People({favoriteNumber: 2, name: "Patrick"});
 
     // Array of people
-    People[] public people;     // Dynamic Array
+    People[] public people; // Dynamic Array
     mapping(string => uint256) public nameToFavoriteNumber;
 
     // People[1] // Fixed size array
@@ -30,7 +29,7 @@ contract SimpleStorage {
         favoriteNumber = _favoriteNumber;
     }
 
-    function retreive() view public returns(uint256){
+    function retrieve() public view returns (uint256) {
         return favoriteNumber;
     }
 
