@@ -43,10 +43,19 @@ abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 # print(abi)
 # We choose an HTTP Provider
 # for connecting to ganache
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
-chain_id = 1337
-my_address = "0x363c9a040c11F5A203A9F12803590997C2eB7Aa2"
+# w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+# chain_id = 1337
+# my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
+# pvt_key = os.getenv("PRIVATE_KEY")
+
+# for connecting to Rinkeby
+w3 = Web3(
+    Web3.HTTPProvider("https://rinkeby.infura.io/v3/d3db5ee9981b4500be7eff014c43ecdb")
+)
+chain_id = 4
+my_address = "0xbB66eF34814f0613a3B738288FE55553A69C44BA"
 pvt_key = os.getenv("PRIVATE_KEY")
+
 # print(pvt_key)
 
 # Create a contract in python
