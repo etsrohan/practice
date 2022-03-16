@@ -10,14 +10,16 @@ contract FundMe {
     mapping(address => uint256) public addressToAmountFunded;
     address[] public funders;
     address public owner;
+    AggregatorV3Interface public priceFeed;
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the Owner can withdraw the money!");
         _;
     }
 
-    constructor() {
+    constructor(address _priceFeed) {
         owner = msg.sender;
+        priceFeed = AggregatorV3Interface(_priceFeed);
     }
 
     // Function that can accept payment
@@ -38,17 +40,10 @@ contract FundMe {
     // Get version function calling version function in the interface from
     // AggregatorV3Interface.sol
     function getVersion() public view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(
-            0x8A753747A1Fa494EC906cE90E9f37563A8AF630e
-        );
         return priceFeed.version();
     }
 
     function getPrice() public view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(
-            0x8A753747A1Fa494EC906cE90E9f37563A8AF630e
-        );
-
         // Answer returns price of ETH in USD with 8 decimal places
         (, int256 answer, , , ) = priceFeed.latestRoundData();
         return uint256(answer * 10**10); // Getting Price of ETH in USD with 18 decimal places
