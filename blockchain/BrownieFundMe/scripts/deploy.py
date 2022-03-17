@@ -6,8 +6,15 @@ def deploy_fund_me():
     admin = get_account()
     # Pass the price feed address to our fundme contract
 
+    if network.show_active() != "development":
+        price_feed_address = config["networks"][network.show_active()][
+            "eth_usd_price_feed"
+        ]
+    else:
+        pass
+
     fund_me = FundMe.deploy(
-        get_aggregator(),
+        price_feed_address,
         {"from": admin},
         publish_source=True,
     )
