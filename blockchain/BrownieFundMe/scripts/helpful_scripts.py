@@ -3,7 +3,11 @@ from web3 import Web3
 
 DECIMALS = 18
 STARTING_PRICE = 2000
-LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
+LOCAL_BLOCKCHAIN_ENVIRONMENTS = [
+    "development",
+    "ganache-local",
+    "ganache-local-default",
+]
 
 
 def get_account():
