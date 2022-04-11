@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Note: We need to deploy this on the testnet. Here we are using the Rinkeby TestNet.
+// Note: We need to deploy this on the testnet. Here we are using the Rinkeby TestNet
+// or deploy a mock.
 
 pragma solidity >=0.6.6 <0.9.0;
 
@@ -29,7 +30,7 @@ contract FundMe {
         // what the ETH -> USD confersion rate is
         // Use a decentralized oracle network - Chainlink
         require(
-            getConversionRate(msg.value) > minimumUSD,
+            getConversionRate(msg.value) >= minimumUSD,
             "You need to spend more ETH!"
         );
         addressToAmountFunded[msg.sender] += msg.value;
@@ -75,5 +76,13 @@ contract FundMe {
             // addressToAmountFunded[funder] = 0;
         }
         funders = new address[](0);
+    }
+
+    function getEntranceFee() public view returns (uint256) {
+        // minimumUSD
+        uint256 minimumUSD = 50 * 10**18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+        return (minimumUSD * precision) / price;
     }
 }
