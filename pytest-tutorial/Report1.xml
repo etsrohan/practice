@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="10" time="0.101" timestamp="2022-04-17T02:13:06.456394" hostname="rohan-skybox"><testcase classname="test.first_test" name="test1" time="0.001" /><testcase classname="test.first_test" name="test2" time="0.001" /><testcase classname="test.first_test" name="test3" time="0.001" /><testcase classname="test.fourth_test" name="test_random" time="0.002"><failure message="assert 2 == 3">def test_random():
+        x = random.randint(0, 5)
+        y = 3
+&gt;       assert x == y
+E       assert 2 == 3
+
+test/fourth_test.py:7: AssertionError</failure></testcase><testcase classname="test.second_test" name="test_car" time="0.001" /><testcase classname="test.second_test" name="test_login" time="0.002" /><testcase classname="test.second_test" name="test_checkout" time="0.001" /><testcase classname="test.second_test" name="test_logout" time="0.001" /><testcase classname="test.test_third" name="test_responsecode200" time="0.001" /><testcase classname="test.test_third" name="test_responsecode400" time="0.001" /></testsuite></testsuites>
