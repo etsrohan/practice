@@ -1,4 +1,5 @@
 import pytest
+import sys
 
 
 class Car:
@@ -9,6 +10,7 @@ class Car:
 my_car = Car()
 
 
+@pytest.mark.skipif(sys.version_info < (3, 9), reason="Python version not supported")
 def test_car():
     assert my_car.name == "Tesla"
 
@@ -25,6 +27,7 @@ def test_checkout():
     assert x == "Checkout"
 
 
+@pytest.mark.skip
 def test_logout():
     x = "Logout"
     assert x == "Logout"
